@@ -1,23 +1,9 @@
-#    This file is part of the AutoAnime distribution.
-#    Copyright (c) 2024 Kaif_00z
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, version 3.
-#
-#    This program is distributed in the hope that it will be useful, but
-#    WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-#    General Public License for more details.
-#
-# License can be found in <
-# https://github.com/kaif-00z/AutoAnimeBot/blob/main/LICENSE > .
-
-# if you are using this following code then don't forgot to give proper
-# credit to t.me/kAiF_00z (github.com/kaif-00z)
-
+import os
+import threading
 from traceback import format_exc
 
+# Flask সংযুক্ত করা হচ্ছে
+from flask import Flask
 from telethon import Button, events
 
 from core.bot import Bot
@@ -30,6 +16,21 @@ from functions.utils import AdminUtils
 from libs.ariawarp import Torrent
 from libs.logger import LOGS, Reporter
 from libs.subsplease import SubsPlease
+
+# Flask অ্যাপ তৈরি করা হচ্ছে
+app = Flask(__name__)
+
+
+@app.route("/health")
+def health_check():
+    return "Bot is running!", 200
+
+
+def run_flask():
+    # ডিফল্ট পোর্ট 5000, তবে পরিবেশ ভেরিয়েবল থেকে সেট করা যাবে
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
+
 
 tools = Tools()
 tools.init_dir()
@@ -52,17 +53,15 @@ async def _start(event):
     await dB.add_broadcast_user(event.sender_id)
     if Var.FORCESUB_CHANNEL and Var.FORCESUB_CHANNEL_LINK:
         is_user_joined = await bot.is_joined(Var.FORCESUB_CHANNEL, event.sender_id)
-        if is_user_joined:
-            pass
-        else:
+        if not is_user_joined:
             return await xnx.edit(
-                f"**Please Join The Following Channel To Use This Bot 🫡**",
+                "**Please Join The Following Channel To Use This Bot 🫡**",
                 buttons=[
                     [Button.url("🚀 JOIN CHANNEL", url=Var.FORCESUB_CHANNEL_LINK)],
                     [
                         Button.url(
                             "♻️ REFRESH",
-                            url=f"https://t.me/{((await bot.get_me()).username)}?start={msg_id}",
+                            url=f"https://t.me/{(await bot.get_me()).username}?start={msg_id}",
                         )
                     ],
                 ],
@@ -88,10 +87,7 @@ async def _start(event):
             buttons=[
                 [
                     Button.url("👨‍💻 DEV", url="t.me/RahatMx"),
-                    Button.url(
-                        "💖 Update Channel",
-                        url="t.me/Animetaboo",
-                    ),
+                    Button.url("🕸️ Update Channel", url="https://t.me/AnimeTaboo"),
                 ]
             ],
         )
@@ -197,8 +193,11 @@ async def anime(data):
         LOGS.error(str(format_exc()))
 
 
-try:
-    bot.loop.run_until_complete(subsplease.on_new_anime(anime))
-    bot.run()
-except KeyboardInterrupt:
-    subsplease._exit()
+# Flask এবং টেলিগ্রাম বট একসাথে চালানোর জন্য থ্রেড ব্যবহার করা হচ্ছে
+if __name__ == "__main__":
+    threading.Thread(target=run_flask).start()  # Flask চালু করা
+    try:
+        bot.loop.run_until_complete(subsplease.on_new_anime(anime))
+        bot.run()
+    except KeyboardInterrupt:
+        subsplease._exit()
