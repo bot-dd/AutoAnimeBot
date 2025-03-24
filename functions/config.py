@@ -47,12 +47,12 @@ class Var:
     # Other Configs
 
     THUMB = config(
-        "THUMBNAIL", default="https://graph.org/file/ad1b25807b81cdf1dff65.jpg"
+        "THUMBNAIL", default="https://graph.org/file/d4e6d1fd7e7fde9bee166-42d4b966221d9fe0c3.jpg"
     )
     FFMPEG = config("FFMPEG", default="ffmpeg")
     CRF = config("CRF", default="27")
-    SEND_SCHEDULE = config("SEND_SCHEDULE", default=False, cast=bool)
-    RESTART_EVERDAY = config("RESTART_EVERDAY", default=True, cast=bool)
+    SEND_SCHEDULE = config("SEND_SCHEDULE", default=True, cast=bool)
+    RESTART_EVERDAY = config("RESTART_EVERDAY", default=False, cast=bool)
     LOG_ON_MAIN = config("LOG_ON_MAIN", default=False, cast=bool)
     FORCESUB_CHANNEL_LINK = config("FORCESUB_CHANNEL_LINK", default="", cast=str)
 
