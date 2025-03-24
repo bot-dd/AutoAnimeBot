@@ -35,7 +35,8 @@ class AnimeInfo:
 **‣ Season:** `{}`
 **‣ Episode:** `{}`
 **━━━━━━━━━━━━━━━**
-"""
+
+➪ Join @AnimTaboo"""
         self.proper_name = self.get_proper_name_for_func(name)
         self.name = name
         self.data = anitopy.parse(name)
