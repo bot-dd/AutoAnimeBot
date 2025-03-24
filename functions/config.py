@@ -47,7 +47,8 @@ class Var:
     # Other Configs
 
     THUMB = config(
-        "THUMBNAIL", default="https://graph.org/file/d4e6d1fd7e7fde9bee166-42d4b966221d9fe0c3.jpg"
+        "THUMBNAIL",
+        default="https://graph.org/file/d4e6d1fd7e7fde9bee166-42d4b966221d9fe0c3.jpg",
     )
     FFMPEG = config("FFMPEG", default="ffmpeg")
     CRF = config("CRF", default="27")
