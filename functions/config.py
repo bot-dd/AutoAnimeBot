@@ -54,7 +54,9 @@ class Var:
     SEND_SCHEDULE = config("SEND_SCHEDULE", default=True, cast=bool)
     RESTART_EVERDAY = config("RESTART_EVERDAY", default=False, cast=bool)
     LOG_ON_MAIN = config("LOG_ON_MAIN", default=True, cast=bool)
-    FORCESUB_CHANNEL_LINK = config("FORCESUB_CHANNEL_LINK", default="https://t.me/AnimeTaboo", cast=str)
+    FORCESUB_CHANNEL_LINK = config(
+        "FORCESUB_CHANNEL_LINK", default="https://t.me/AnimeTaboo", cast=str
+    )
 
     # Dev Configs
 
