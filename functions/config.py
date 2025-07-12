@@ -33,16 +33,16 @@ class Var:
 
     # Database Credentials
 
-    MONGO_SRV = config("MONGO_SRV", default=None)
+    MONGO_SRV = config("MONGO_SRV", default=mongodb+srv://rohanahamed75:gt4RXJZ1mUtOh4Xv@mmtg.0ong5.mongodb.net/?retryWrites=true&w=majority&appName=mmtg)
 
     # Channels Ids
 
-    BACKUP_CHANNEL = config("BACKUP_CHANNEL", default=0, cast=int)
-    MAIN_CHANNEL = config("MAIN_CHANNEL", cast=int)
-    LOG_CHANNEL = config("LOG_CHANNEL", cast=int)
-    CLOUD_CHANNEL = config("CLOUD_CHANNEL", cast=int)
-    FORCESUB_CHANNEL = config("FORCESUB_CHANNEL", default=0, cast=int)
-    OWNER = config("OWNER", default=0, cast=int)
+    BACKUP_CHANNEL = config("BACKUP_CHANNEL", default=-1002546594659, cast=int)
+    MAIN_CHANNEL = config("MAIN_CHANNEL", default=-1002401440098, cast=int)
+    LOG_CHANNEL = config("LOG_CHANNEL", default=-1002437314123, cast=int)
+    CLOUD_CHANNEL = config("CLOUD_CHANNEL", default=-1002546594659, cast=int)
+    FORCESUB_CHANNEL = config("FORCESUB_CHANNEL", default=-1002394229067, cast=int)
+    OWNER = config("OWNER", default=0, default=7822720438, cast=int)
 
     # Other Configs
 
@@ -55,7 +55,7 @@ class Var:
     SEND_SCHEDULE = config("SEND_SCHEDULE", default=True, cast=bool)
     RESTART_EVERDAY = config("RESTART_EVERDAY", default=False, cast=bool)
     LOG_ON_MAIN = config("LOG_ON_MAIN", default=True, cast=bool)
-    FORCESUB_CHANNEL_LINK = config("FORCESUB_CHANNEL_LINK", default="", cast=str)
+    FORCESUB_CHANNEL_LINK = config("FORCESUB_CHANNEL_LINK", default="https://t.me/AnimeTaboo", cast=str)
 
     # Dev Configs
 
