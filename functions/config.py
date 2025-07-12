@@ -33,8 +33,7 @@ class Var:
 
     # Database Credentials
 
-    MONGO_SRV = config("MONGO_SRV", default=mongodb+srv://rohanahamed75:gt4RXJZ1mUtOh4Xv@mmtg.0ong5.mongodb.net/?retryWrites=true&w=majority&appName=mmtg)
-
+    MONGO_SRV = config("MONGO_SRV", default=None)
     # Channels Ids
 
     BACKUP_CHANNEL = config("BACKUP_CHANNEL", default=-1002546594659, cast=int)
