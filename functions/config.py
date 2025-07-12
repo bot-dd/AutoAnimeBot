@@ -22,7 +22,7 @@ from decouple import config
 class Var:
     # Version
 
-    __version__ = "v0.0.8"
+    __version__ = "v0.1@stable.july"
 
     # Telegram Credentials
 
@@ -34,27 +34,29 @@ class Var:
     # Database Credentials
 
     MONGO_SRV = config("MONGO_SRV", default=None)
-
     # Channels Ids
 
-    BACKUP_CHANNEL = config("BACKUP_CHANNEL", default=0, cast=int)
-    MAIN_CHANNEL = config("MAIN_CHANNEL", cast=int)
-    LOG_CHANNEL = config("LOG_CHANNEL", cast=int)
-    CLOUD_CHANNEL = config("CLOUD_CHANNEL", cast=int)
-    FORCESUB_CHANNEL = config("FORCESUB_CHANNEL", default=0, cast=int)
-    OWNER = config("OWNER", default=0, cast=int)
+    BACKUP_CHANNEL = config("BACKUP_CHANNEL", default=-1002546594659, cast=int)
+    MAIN_CHANNEL = config("MAIN_CHANNEL", default=-1002401440098, cast=int)
+    LOG_CHANNEL = config("LOG_CHANNEL", default=-1002437314123, cast=int)
+    CLOUD_CHANNEL = config("CLOUD_CHANNEL", default=-1002546594659, cast=int)
+    FORCESUB_CHANNEL = config("FORCESUB_CHANNEL", default=-1002394229067, cast=int)
+    OWNER = config("OWNER", default=7822720438, cast=int)
 
     # Other Configs
 
     THUMB = config(
-        "THUMBNAIL", default="https://graph.org/file/ad1b25807b81cdf1dff65.jpg"
+        "THUMBNAIL",
+        default="https://graph.org/file/d4e6d1fd7e7fde9bee166-42d4b966221d9fe0c3.jpg",
     )
     FFMPEG = config("FFMPEG", default="ffmpeg")
     CRF = config("CRF", default="27")
-    SEND_SCHEDULE = config("SEND_SCHEDULE", default=False, cast=bool)
-    RESTART_EVERDAY = config("RESTART_EVERDAY", default=True, cast=bool)
-    LOG_ON_MAIN = config("LOG_ON_MAIN", default=False, cast=bool)
-    FORCESUB_CHANNEL_LINK = config("FORCESUB_CHANNEL_LINK", default="", cast=str)
+    SEND_SCHEDULE = config("SEND_SCHEDULE", default=True, cast=bool)
+    RESTART_EVERDAY = config("RESTART_EVERDAY", default=False, cast=bool)
+    LOG_ON_MAIN = config("LOG_ON_MAIN", default=True, cast=bool)
+    FORCESUB_CHANNEL_LINK = config(
+        "FORCESUB_CHANNEL_LINK", default="https://t.me/AnimeTaboo", cast=str
+    )
 
     # Dev Configs
 
